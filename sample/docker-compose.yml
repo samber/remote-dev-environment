@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:10
+    ports:
+      - 5432:5432
+    volumes:
+      - ./schema:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=sample
+      - POSTGRES_PASSWORD=sample
+
+  cli:
+    image: postgres:10
+    command: watch "psql postgres://sample:sample@postgres:5432/sample -c 'SELECT NOW();'"
+    depends_on:
+      - postgres
