@@ -20,7 +20,7 @@ Block every incoming connections to Docker containers in your firewall:
 ```sh
 $ iptables -I DOCKER-USER -j DROP
 $ iptables -I DOCKER-USER -i lo -j ACCEPT
-$ iptables -I DOCKER-USER -i docker0 -j ACCEPT
+$ iptables -I DOCKER-USER -s 172.0.0.0/8 -j ACCEPT
 $ iptables -I DOCKER-USER -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 # persist iptables config
