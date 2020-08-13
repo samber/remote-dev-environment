@@ -31,6 +31,11 @@ $ reboot
 ### Local machine
 
 ```sh
+# link local docker client to remote daemon, using tls encryption
+$ docker-machine create --driver generic --generic-ip-address=1.2.3.4 default
+```
+
+```sh
 $ brew install rsync lsyncd
 ```
 
